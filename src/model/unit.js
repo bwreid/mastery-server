@@ -16,9 +16,15 @@ const updateUnit = (id, body) => knex('units')
   .update(body)
   .returning('*')
 
+const deleteUnit = (id) => knex('units')
+  .where('id', id)
+  .returning('*')
+  .del()
+
 module.exports = { 
   getAllUnits,
   getOneUnit,
   createUnit,
-  updateUnit
+  updateUnit,
+  deleteUnit
 }

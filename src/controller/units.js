@@ -21,9 +21,14 @@ const createUnit = (req, res, next) => {
 }
 
 const updateUnit = (req, res, next) => {
-  console.log('updating')
   model.updateUnit(req.params.id, req.body).then(response => {
-    console.log('updated')
+    const [unit] = response
+    res.status(200).json({ unit })
+  })
+}
+
+const deleteUnit = (req, res, next) => {
+  model.deleteUnit(req.params.id).then(response => {
     const [unit] = response
     res.status(200).json({ unit })
   })
@@ -58,6 +63,7 @@ module.exports = {
   getOneUnit,
   createUnit,
   updateUnit,
+  deleteUnit,
   validations: {
     complete, prune, exists
   }
