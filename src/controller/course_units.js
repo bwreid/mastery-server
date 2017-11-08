@@ -12,7 +12,20 @@ const getOneCourseUnit = (req, res, next) => {
   })
 }
 
+const exists = (req, res, next) => {
+  model.getOneCourseUnit(req.params.id, req.params.unit_id).then(result => {
+    if(result.length > 0) {
+      next()
+    } else {
+      next({ status: 404, message: 'Not found' })
+    }
+  })
+}
+
 module.exports = {
   getAllCourseUnits,
-  getOneCourseUnit
+  getOneCourseUnit,
+  validations: {
+    exists
+  }
 }
