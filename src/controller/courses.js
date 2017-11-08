@@ -15,7 +15,12 @@ const getOneCourse = (req, res, next) => {
 
 const createCourse = (req, res, next) => {
   model.createCourse(req.body).then(course => {
-    console.log('created?')
+    res.status(200).json({ course })
+  })
+}
+
+const updateCourse = (req, res, next) => {
+  model.updateCourse(req.params.id, req.body).then(course => {
     res.status(200).json({ course })
   })
 }
@@ -36,11 +41,20 @@ const prune = (req, res, next) => {
   next()
 }
 
+const exists = (req, res, next) => {
+  model.getOneCourse(req.params.id).then(course => {
+    next()
+  }).catch(error => {
+    next({ status: 404, error })
+  })
+}
+
 module.exports = {
   getAllCourses,
   getOneCourse,
   createCourse,
+  updateCourse,
   validations: {
-    complete, prune,
+    complete, prune, exists
   }
 }

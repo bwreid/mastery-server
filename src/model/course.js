@@ -10,8 +10,14 @@ const createCourse = body => knex('courses')
   .insert(body)
   .returning('*')
 
+const updateCourse = (id, body) => knex('courses')
+  .where('id', id)
+  .update(body)
+  .returning('*')
+
 module.exports = {
   getAllCourses,
   getOneCourse,
   createCourse,
+  updateCourse,
 }
