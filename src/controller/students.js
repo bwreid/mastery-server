@@ -14,7 +14,15 @@ const getOneStudent = (req, res, next) => {
 }
 
 const createNewStudent = (req, res, next) => {
-  model.createNewStudent(req.body).then(student => {
+  model.createNewStudent(req.body).then(result => {
+    const [student] = result
+    res.status(200).json({ student })
+  })
+}
+
+const updateStudent = (req, res, next) => {
+  model.updateStudent(req.params.id, req.body).then(result => {
+    const [student] = result
     res.status(200).json({ student })
   })
 }
@@ -46,6 +54,7 @@ module.exports = {
   getAllStudents,
   getOneStudent,
   createNewStudent,
+  updateStudent,
   validations: {
     exists, complete, prune
   }
