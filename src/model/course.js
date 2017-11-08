@@ -15,9 +15,15 @@ const updateCourse = (id, body) => knex('courses')
   .update(body)
   .returning('*')
 
+const deleteCourse = id => knex('courses')
+  .where('id', id)
+  .returning('*')
+  .del()
+
 module.exports = {
   getAllCourses,
   getOneCourse,
   createCourse,
   updateCourse,
+  deleteCourse,
 }

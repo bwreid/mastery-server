@@ -25,6 +25,12 @@ const updateCourse = (req, res, next) => {
   })
 }
 
+const deleteCourse = (req, res, next) => {
+  model.deleteCourse(req.params.id).then(course => {
+    res.status(200).json({ course })
+  })
+}
+
 const complete = (req, res, next) => {
   const errors = []
   fields.forEach(field => {
@@ -54,6 +60,7 @@ module.exports = {
   getOneCourse,
   createCourse,
   updateCourse,
+  deleteCourse,
   validations: {
     complete, prune, exists
   }
