@@ -20,6 +20,15 @@ const createUnit = (req, res, next) => {
   })
 }
 
+const updateUnit = (req, res, next) => {
+  console.log('updating')
+  model.updateUnit(req.params.id, req.body).then(response => {
+    console.log('updated')
+    const [unit] = response
+    res.status(200).json({ unit })
+  })
+}
+
 const complete = (req, res, next) => {
   const errors = []
   fields.forEach(field => {
@@ -36,11 +45,20 @@ const prune = (req, res, next) => {
   next()
 }
 
+const exists = (req, res, next) => {
+  model.getOneUnit(req.params.id).then(exists => {
+    next()
+  }).catch(error => {
+    next({ status: 404, error })
+  })
+}
+
 module.exports = {
   getAllUnits,
   getOneUnit,
   createUnit,
+  updateUnit,
   validations: {
-    complete, prune,
+    complete, prune, exists
   }
 }

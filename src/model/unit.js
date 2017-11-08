@@ -11,8 +11,14 @@ const createUnit = body => knex('units')
   .insert(body)
   .returning('*')
 
+const updateUnit = (id, body) => knex('units')
+  .where('id', id)
+  .update(body)
+  .returning('*')
+
 module.exports = { 
   getAllUnits,
   getOneUnit,
-  createUnit
+  createUnit,
+  updateUnit
 }
