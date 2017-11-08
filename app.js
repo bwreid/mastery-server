@@ -3,7 +3,11 @@ const app = express()
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
 
-const { courseRoutes, unitRoutes } = require('./src/routes')
+const { 
+  courseRoutes, 
+  unitRoutes, 
+  courseUnitRoutes 
+} = require('./src/routes')
 
 const port = process.env.PORT || 3000
 
@@ -11,6 +15,7 @@ app.disable('x-powered-by')
 if(process.env.NODE_ENV === 'development') app.use(morgan('dev'))
 app.use(bodyParser.json())
 
+app.use('/courses/:id/units', courseUnitRoutes)
 app.use('/courses', courseRoutes)
 app.use('/units', unitRoutes)
 
