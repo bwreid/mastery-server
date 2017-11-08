@@ -2,5 +2,6 @@ module.exports = {
   courseRoutes: require('./courses'),
   unitRoutes: require('./units'),
   courseUnitRoutes: require('./course_units'),
-  teacherRoutes: require('./teachers')
+  teacherRoutes: require('./teachers'),
+  studentRoutes: require('./students')
 }

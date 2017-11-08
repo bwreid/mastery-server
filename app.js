@@ -8,7 +8,8 @@ const {
   courseRoutes, 
   unitRoutes, 
   courseUnitRoutes,
-  teacherRoutes 
+  teacherRoutes,
+  studentRoutes 
 } = require('./src/routes')
 
 const port = process.env.PORT || 3000
@@ -21,6 +22,7 @@ app.use('/courses/:id/units', courseUnitRoutes)
 app.use('/courses', courseRoutes)
 app.use('/units', unitRoutes)
 app.use('/teachers', teacherRoutes)
+app.use('/students', studentRoutes)
 
 app.use((err, req, res, next) => {
   const status = err.status || 500
