@@ -14,7 +14,8 @@ const getOneCourse = (req, res, next) => {
 }
 
 const createCourse = (req, res, next) => {
-  model.createCourse(req.body).then(course => {
+  model.createCourse(req.body).then(response => {
+    const [course] = response
     res.status(200).json({ course })
   })
 }

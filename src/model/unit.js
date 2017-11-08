@@ -7,7 +7,12 @@ const getOneUnit = id => knex('units')
   .where('id', id)
   .first()
 
+const createUnit = body => knex('units')
+  .insert(body)
+  .returning('*')
+
 module.exports = { 
   getAllUnits,
-  getOneUnit
+  getOneUnit,
+  createUnit
 }
