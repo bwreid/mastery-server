@@ -20,6 +20,13 @@ const createTeacher = (req, res, next) => {
   })
 }
 
+const updateTeacher = (req, res, next) => {
+  model.updateTeacher(req.params.id, req.body).then(result => {
+    const [teacher] = result
+    res.status(200).json({ teacher })
+  })
+}
+
 const complete = (req, res, next) => {
   const errors = []
   fields.forEach(field => {
@@ -48,6 +55,7 @@ module.exports = {
   getAllTeachers,
   getOneTeacher,
   createTeacher,
+  updateTeacher,
   validations: {
     prune, complete, exists
   }

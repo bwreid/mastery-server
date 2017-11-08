@@ -9,9 +9,15 @@ const getOneTeacher = (id) => knex('teachers')
 const createTeacher = (body) => knex('teachers')
   .insert(body)
   .returning('*')
-  
+
+const updateTeacher = (id, body) => knex('teachers')
+  .where('id', id)
+  .update(body)
+  .returning('*')
+
 module.exports = {
   getAllTeachers,
   getOneTeacher,
   createTeacher,
+  updateTeacher
 }
