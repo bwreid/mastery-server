@@ -1,3 +1,4 @@
 module.exports = {
-  coursesController: require('./courses')
+  coursesController: require('./courses'),
+  unitsController: require('./units')
 }

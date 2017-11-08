@@ -3,7 +3,7 @@ const app = express()
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
 
-const { courseRoutes } = require('./src/routes')
+const { courseRoutes } = require('./routes')
 
 const port = process.env.PORT || 3000
 
