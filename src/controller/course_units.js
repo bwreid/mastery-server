@@ -20,6 +20,20 @@ const createCourseUnit = (req, res, next) => {
   })
 }
 
+const updateCourseUnit = (req, res, next) => {
+  model.updateCourseUnit(req.params.id, req.params.unit_id, req.body).then(result => {
+    const [unit] = result
+    res.status(200).json({ unit })
+  })
+}
+
+const deleteCourseUnit = (req, res, next) => {
+  model.deleteCourseUnit(req.params.id, req.params.unit_id).then(result => {
+    const [unit] = result
+    res.status(200).json({ unit })
+  })
+}
+
 const exists = (req, res, next) => {
   model.getOneCourseUnit(req.params.id, req.params.unit_id).then(result => {
     if(result.length > 0) {
@@ -53,6 +67,8 @@ module.exports = {
   getAllCourseUnits,
   getOneCourseUnit,
   createCourseUnit,
+  updateCourseUnit,
+  deleteCourseUnit,
   validations: {
     exists, complete, prune
   }
