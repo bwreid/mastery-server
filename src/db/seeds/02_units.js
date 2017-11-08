@@ -8,6 +8,6 @@ exports.seed = knex => {
         {id: 3, course_id: 2, title: 'The Skeleton', summary: 'Freegan farm-to-table gastropub tousled, typewriter vegan hammock ennui ethical blue bottle. Occupy kickstarter wolf health goth snackwave pour-over.'}
       ])
     }).then(() => {
-      return knex.raw(`SELECT setval('units_id_seq', (SELECT MAX(id) FROM units))`)
+      return knex.raw(`SELECT setval('units_id_seq', (SELECT MAX(id) FROM units));`)
     })
 }

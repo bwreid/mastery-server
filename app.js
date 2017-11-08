@@ -2,11 +2,13 @@ const express = require('express')
 const app = express()
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
+const pg = require('pg')
 
 const { 
   courseRoutes, 
   unitRoutes, 
-  courseUnitRoutes 
+  courseUnitRoutes,
+  teacherRoutes 
 } = require('./src/routes')
 
 const port = process.env.PORT || 3000
@@ -18,6 +20,7 @@ app.use(bodyParser.json())
 app.use('/courses/:id/units', courseUnitRoutes)
 app.use('/courses', courseRoutes)
 app.use('/units', unitRoutes)
+app.use('/teachers', teacherRoutes)
 
 app.use((err, req, res, next) => {
   const status = err.status || 500
