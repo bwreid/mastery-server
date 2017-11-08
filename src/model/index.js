@@ -1,4 +1,4 @@
 module.exports = {
   courseModel: require('./course'),
-  unitModel: require('./unit')
+  unitModel: require('./unit'),
 }

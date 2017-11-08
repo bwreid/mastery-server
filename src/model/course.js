@@ -5,6 +5,7 @@ const getAllCourses = () => knex('courses')
 const getOneCourse = id => knex('courses')
   .select('*')
   .where('id', id)
+  .first()
 
 const createCourse = body => knex('courses')
   .insert(body)
