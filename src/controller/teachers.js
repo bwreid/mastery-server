@@ -27,6 +27,13 @@ const updateTeacher = (req, res, next) => {
   })
 }
 
+const deleteTeacher = (req, res, next) => {
+  model.deleteTeacher(req.params.id).then(result => {
+    const [teacher] = result
+    res.status(200).json({ teacher })
+  })
+}
+
 const complete = (req, res, next) => {
   const errors = []
   fields.forEach(field => {
@@ -44,10 +51,9 @@ const prune = (req, res, next) => {
 }
 
 const exists = (req, res, next) => {
-  model.getOneTeacher(req.params.id).then(course => {
-    next()
-  }).catch(error => {
-    next({ status: 404, error })
+  model.getOneTeacher(req.params.id).then(teacher => {
+    if(!teacher) next({ status: 404, message: 'Not found' })
+    else next()
   })
 }
 
@@ -56,6 +62,7 @@ module.exports = {
   getOneTeacher,
   createTeacher,
   updateTeacher,
+  deleteTeacher,
   validations: {
     prune, complete, exists
   }
