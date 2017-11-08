@@ -27,6 +27,13 @@ const updateStudent = (req, res, next) => {
   })
 }
 
+const deleteStudent = (req, res, next) => {
+  model.deleteStudent(req.params.id).then(result => {
+    const [student] = result
+    res.status(200).json({ student })
+  })
+}
+
 const complete = (req, res, next) => {
   const errors = []
   fields.forEach(field => {
@@ -55,6 +62,7 @@ module.exports = {
   getOneStudent,
   createNewStudent,
   updateStudent,
+  deleteStudent,
   validations: {
     exists, complete, prune
   }

@@ -15,9 +15,16 @@ const updateStudent = (id, body) => knex('students')
   .update(body)
   .returning('*')
 
+const deleteStudent = (id) => knex('students')
+  .where('id', id)
+  .returning('*')
+  .del()
+
+
 module.exports = {
   getAllStudents,
   getOneStudent,
   createNewStudent,
-  updateStudent
+  updateStudent,
+  deleteStudent
 }
