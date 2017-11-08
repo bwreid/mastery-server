@@ -11,7 +11,14 @@ const getOneCourseUnit = (courseId, unitId) => {
     .andWhere('id', unitId)
 }
 
+const createCourseUnit = (courseId, body) => {
+  return knex('units')
+    .insert({ course_id: courseId, ...body })
+    .returning('*')
+}
+
 module.exports = {
   getAllCourseUnits,
-  getOneCourseUnit
+  getOneCourseUnit,
+  createCourseUnit
 }
