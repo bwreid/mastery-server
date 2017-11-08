@@ -6,6 +6,13 @@ const getAllTeachers = (req, res, next) => {
   }) 
 }
 
+const getOneTeacher = (req, res, next) => {
+  model.getOneTeacher(req.params.id).then(teacher => {
+    res.status(200).json({ teacher })
+  })
+}
+
 module.exports = {
-  getAllTeachers
+  getAllTeachers,
+  getOneTeacher
 }
