@@ -6,7 +6,12 @@ const getOneTeacher = (id) => knex('teachers')
   .where('id', id)
   .first()
 
+const createTeacher = (body) => knex('teachers')
+  .insert(body)
+  .returning('*')
+  
 module.exports = {
   getAllTeachers,
-  getOneTeacher
+  getOneTeacher,
+  createTeacher,
 }
