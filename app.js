@@ -8,6 +8,8 @@ const {
   courseRoutes, 
   unitRoutes, 
   courseUnitRoutes,
+  unitLessonRoutes,
+  lessonRoutes,
   teacherRoutes,
   studentRoutes 
 } = require('./src/routes')
@@ -18,9 +20,11 @@ app.disable('x-powered-by')
 if(process.env.NODE_ENV === 'development') app.use(morgan('dev'))
 app.use(bodyParser.json())
 
+app.use('/units/:id/lessons', unitLessonRoutes)
 app.use('/courses/:id/units', courseUnitRoutes)
 app.use('/courses', courseRoutes)
 app.use('/units', unitRoutes)
+app.use('/lessons', lessonRoutes)
 app.use('/teachers', teacherRoutes)
 app.use('/students', studentRoutes)
 

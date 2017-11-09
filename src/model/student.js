@@ -20,7 +20,6 @@ const deleteStudent = (id) => knex('students')
   .returning('*')
   .del()
 
-
 module.exports = {
   getAllStudents,
   getOneStudent,
