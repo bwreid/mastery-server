@@ -6,6 +6,14 @@ const getAllClasses = (req, res, next) => {
   })
 }
 
+const getOneClass = (req, res, next) => {
+  model.getOneClass(req.params.id).then(group => {
+    
+    res.status(200).json({ group })
+  })
+}
+
 module.exports = {
-  getAllClasses
+  getAllClasses,
+  getOneClass
 }
