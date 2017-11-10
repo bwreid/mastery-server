@@ -6,5 +6,6 @@ module.exports = {
   unitLessonRoutes: require('./unit_lessons'),
   teacherRoutes: require('./teachers'),
   studentRoutes: require('./students'),
-  classRoutes: require('./classes')
+  classRoutes: require('./classes'),
+  classStudentsRoutes: require('./class_students')
 }

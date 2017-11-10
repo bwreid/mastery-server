@@ -13,7 +13,8 @@ const {
   lessonRoutes,
   teacherRoutes,
   studentRoutes,
-  classRoutes 
+  classRoutes,
+  classStudentsRoutes
 } = require('./src/routes')
 
 const port = process.env.PORT || 3000
@@ -25,6 +26,7 @@ app.use(cors())
 
 app.use('/units/:id/lessons', unitLessonRoutes)
 app.use('/courses/:id/units', courseUnitRoutes)
+app.use('/classes/:id/students', classStudentsRoutes)
 app.use('/courses', courseRoutes)
 app.use('/units', unitRoutes)
 app.use('/lessons', lessonRoutes)
