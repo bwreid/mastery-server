@@ -4,5 +4,6 @@ const { classesController: ctrl } = require('../controller')
 
 router.get('/', ctrl.getAllClasses)
 router.get('/:id', ctrl.getOneClass)
+router.post('/', ctrl.validations.complete, ctrl.validations.prune, ctrl.createClass)
 
 module.exports = router

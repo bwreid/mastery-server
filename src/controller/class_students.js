@@ -21,7 +21,7 @@ const createClassStudent = (req, res, next) => {
 
 const updateClassStudent = (req, res, next) => {
   model.updateClassStudent(req.params.id, req.params.student_id, req.body).then(result => {
-    res.status(200).json({ result})
+    res.status(200).json({ result })
   })
 }
 

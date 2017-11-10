@@ -7,7 +7,12 @@ const getOneClass = (id) => knex('classes')
   .select('*')
   .join('teachers', 'classes.teacher_id', 'teachers.id')
 
+const createClass = (body) => knex('classes')
+  .insert(body)
+  .returning('*')
+  
 module.exports = {
   getAllClasses,
-  getOneClass
+  getOneClass,
+  createClass
 }
