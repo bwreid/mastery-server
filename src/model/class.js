@@ -4,7 +4,7 @@ const getAllClasses = () => knex('classes')
 
 const getOneClass = (id) => knex('classes')
   .where('classes.id', id)
-  .select('*')
+  .select('classes.id AS class_id', 'teachers.id AS teacher_id', 'classes.name AS name', 'teachers.preferred_name AS teacher_name')
   .join('teachers', 'classes.teacher_id', 'teachers.id')
 
 const createClass = (body) => knex('classes')
