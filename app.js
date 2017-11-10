@@ -3,6 +3,7 @@ const app = express()
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
 const pg = require('pg')
+const cors = require('cors')
 
 const { 
   courseRoutes, 
@@ -19,6 +20,7 @@ const port = process.env.PORT || 3000
 app.disable('x-powered-by')
 if(process.env.NODE_ENV === 'development') app.use(morgan('dev'))
 app.use(bodyParser.json())
+app.use(cors())
 
 app.use('/units/:id/lessons', unitLessonRoutes)
 app.use('/courses/:id/units', courseUnitRoutes)
