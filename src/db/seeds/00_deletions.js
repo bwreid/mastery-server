@@ -1,7 +1,8 @@
 exports.seed = knex => {
-  knex.delete('lessons')
-    .then(() => knex.delete('units'))
-    .then(() => knex.delete('students'))
-    .then(() => knex.delete('teachers'))
-    .then(() => knex.delete('courses'))
+  knex('lessons').del()    
+    .then(() => knex('students').del())
+    .then(() => knex('classes').del())
+    .then(() => knex('teachers').del())
+    .then(() => knex('units').del())  
+    .then(() => knex('courses').del())
 }

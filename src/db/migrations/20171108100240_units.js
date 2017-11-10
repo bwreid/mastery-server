@@ -2,7 +2,7 @@
 exports.up = knex => {
   return knex.schema.createTable('units', table => {
     table.increments()
-    table.integer('course_id').notNullable().defaultsTo(0)
+    table.integer('course_id').notNullable()
     table.foreign('course_id').references('courses.id')
     table.string('title').notNullable().defaultsTo('')
     table.string('summary').notNullable().defaultsTo('')
