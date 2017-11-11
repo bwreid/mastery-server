@@ -1,5 +1,5 @@
 const { studentModel: model} = require('../model')
-const fields = ['preferred_name', 'last_name']
+const fields = ['preferred_name', 'last_name', 'class_id']
 
 const getAllStudents = (req, res, next) => {
   model.getAllStudents().then(students => {
