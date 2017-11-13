@@ -19,6 +19,12 @@ const createClass = (req, res, next) => {
   })
 }
 
+const updateClass = (req, res, next) => {
+  model.updateClass(req.params.id, req.body).then(group => {
+    res.status(200).json({ group })
+  })
+}
+
 const complete = (req, res, next) => {
   const errors = []
   fields.forEach(field => {
@@ -47,6 +53,7 @@ module.exports = {
   getAllClasses,
   getOneClass,
   createClass,
+  updateClass,
   validations: {
     complete, prune, exists
   }

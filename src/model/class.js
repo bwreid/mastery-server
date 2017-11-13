@@ -10,9 +10,15 @@ const getOneClass = (id) => knex('classes')
 const createClass = (body) => knex('classes')
   .insert(body)
   .returning('*')
-  
+
+const updateClass = (id, body) => knex('classes')
+  .where('id', id)
+  .update(body)
+  .returning('*')
+
 module.exports = {
   getAllClasses,
   getOneClass,
-  createClass
+  createClass,
+  updateClass
 }
