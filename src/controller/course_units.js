@@ -67,7 +67,7 @@ const prune = (req, res, next) => {
 }
 
 const dependents = (req, res, next) => {
-  dependencyModel.getAllUnitLessons(req.params.id).then(lessons => {
+  dependencyModel.getAllUnitLessons(req.params.unit_id).then(lessons => {
     if(lessons.length > 0) return next ({ status: 400, message: 'Cannot delete course with dependent units' })
     else return next()
   })
