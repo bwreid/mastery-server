@@ -25,6 +25,12 @@ const updateClass = (req, res, next) => {
   })
 }
 
+const deleteClass = (req, res, next) => {
+  model.deleteClass(req.params.id).then(group => {
+    res.status(200).json({ group })
+  })
+}
+
 const complete = (req, res, next) => {
   const errors = []
   fields.forEach(field => {
@@ -54,6 +60,7 @@ module.exports = {
   getOneClass,
   createClass,
   updateClass,
+  deleteClass,
   validations: {
     complete, prune, exists
   }

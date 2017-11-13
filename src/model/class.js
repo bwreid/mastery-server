@@ -16,9 +16,15 @@ const updateClass = (id, body) => knex('classes')
   .update(body)
   .returning('*')
 
+const deleteClass = (id) => knex('classes')
+  .where('id', id)
+  .returning('*')
+  .del()
+
 module.exports = {
   getAllClasses,
   getOneClass,
   createClass,
-  updateClass
+  updateClass,
+  deleteClass
 }
