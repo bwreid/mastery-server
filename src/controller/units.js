@@ -63,9 +63,7 @@ const exists = (req, res, next) => {
 }
 
 const dependents = (req, res, next) => {
-  console.log('units controller dependents function')
   dependencyModel.getAllUnitLessons(req.params.id).then(lessons => {
-    console.log(lessons)
     if(lessons.length > 0) return next ({ status: 400, message: 'Cannot delete unit with dependent lessons' })
     else return next()
   })
