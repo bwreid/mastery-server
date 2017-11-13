@@ -6,6 +6,6 @@ router.get('/', ctrl.getAllClasses)
 router.get('/:id', ctrl.getOneClass)
 router.post('/', ctrl.validations.complete, ctrl.validations.prune, ctrl.createClass)
 router.put('/:id', ctrl.validations.exists, ctrl.validations.complete, ctrl.validations.prune, ctrl.updateClass)
-router.delete('/:id', ctrl.validations.exists, ctrl.deleteClass)
+router.delete('/:id', ctrl.validations.exists, ctrl.validations.dependents, ctrl.deleteClass)
 
 module.exports = router

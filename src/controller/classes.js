@@ -1,4 +1,8 @@
-const { classModel: model } = require('../model')
+const { 
+  classModel: model,
+  classStudentModel: dependencyModel 
+} = require('../model')
+
 const fields = ['name', 'teacher_id']
 
 const getAllClasses = (req, res, next) => {
@@ -50,8 +54,17 @@ const prune = (req, res, next) => {
 const exists = (req, res, next) => {
   model.getOneClass(req.params.id).then(course => {
     next()
-  }).catch(error => {
+  }).catch( error => {
     next({ status: 404, error })
+  })
+}
+
+const dependents = (req, res, next) => {
+  dependencyModel.getClassStudents(req.params.id).then(roster => {
+    if(roster.length) return next ({ status: 400, message: 'Cannot delete class with enrolled students' })
+    else return next()
+  }).catch( error => {
+    next({ status: 500, error })
   })
 }
 
@@ -62,6 +75,6 @@ module.exports = {
   updateClass,
   deleteClass,
   validations: {
-    complete, prune, exists
+    complete, prune, exists, dependents
   }
 }
