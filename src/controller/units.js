@@ -1,4 +1,8 @@
-const { unitModel: model } = require('../model')
+const { 
+  unitModel: model,
+  unitLessonModel: dependencyModel
+} = require('../model')
+
 const fields = ['course_id', 'title', 'summary']
 
 const getAllUnits = (req, res, next) => {
@@ -58,6 +62,13 @@ const exists = (req, res, next) => {
   })
 }
 
+const dependents = (req, res, next) => {
+  dependencyModel.getAllUnitLessons(req.params.id).then(lessons => {
+    if(lessons.length > 0) return next ({ status: 400, message: 'Cannot delete unit with dependent lessons' })
+    else return next()
+  })
+}
+
 module.exports = {
   getAllUnits,
   getOneUnit,
@@ -65,6 +76,6 @@ module.exports = {
   updateUnit,
   deleteUnit,
   validations: {
-    complete, prune, exists
+    complete, prune, exists, dependents
   }
 }
