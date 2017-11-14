@@ -1,4 +1,8 @@
-const { teacherModel: model } = require('../model')
+const { 
+  teacherModel: model,
+  classModel: dependencyModel
+} = require('../model')
+
 const fields = ['first_name', 'last_name', 'preferred_name']
 
 const getAllTeachers = (req, res, next) => {
@@ -57,6 +61,15 @@ const exists = (req, res, next) => {
   })
 }
 
+const dependents = (req, res, next) => {
+  dependencyModel.getAllClasses().then(classes => {
+    if(classes.find(item => item.teacher_id === parseInt(req.params.id))) {
+      return next({ status: 400, message: 'Cannot delete teacher currently assigned to classes' })
+    } 
+    else return next()
+  })
+}
+
 module.exports = {
   getAllTeachers,
   getOneTeacher,
@@ -64,6 +77,6 @@ module.exports = {
   updateTeacher,
   deleteTeacher,
   validations: {
-    prune, complete, exists
+    prune, complete, exists, dependents
   }
 }
