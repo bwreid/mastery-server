@@ -10,6 +10,7 @@ const {
   unitRoutes, 
   courseUnitRoutes,
   unitLessonRoutes,
+  lessonQuestionRoutes,
   lessonRoutes,
   teacherRoutes,
   studentRoutes,
@@ -27,6 +28,7 @@ app.use(cors())
 app.use('/units/:id/lessons', unitLessonRoutes)
 app.use('/courses/:id/units', courseUnitRoutes)
 app.use('/classes/:id/students', classStudentsRoutes)
+app.use('/lessons/:id/questions', lessonQuestionRoutes)
 app.use('/courses', courseRoutes)
 app.use('/units', unitRoutes)
 app.use('/lessons', lessonRoutes)

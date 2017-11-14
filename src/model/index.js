@@ -4,6 +4,7 @@ module.exports = {
   courseUnitModel: require('./course_unit'),
   lessonModel: require('./lesson'),
   unitLessonModel: require('./unit_lesson'),
+  lessonQuestionModel: require('./lesson_question'),
   teacherModel: require('./teacher'),
   studentModel: require('./student'),
   classModel: require('./class'),
