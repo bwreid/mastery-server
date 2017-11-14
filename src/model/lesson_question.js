@@ -11,6 +11,18 @@ const getAllLessonQuestions = (lessonId) => {
     })
 }
 
+const getAllMCQuestions = (lessonId) => {
+  return knex('mc_questions')
+    .select('*')
+    .where('lesson_id', lessonId)
+}
+
+const getAllSAQuestions = (lessonId) => {
+  return knex('sa_questions')
+    .select('*')
+    .where('lesson_id', lessonId)
+}
+
 const getOneMCQuestion = (lessonId, questionId) => {
   return knex('mc_questions')
     .select('*')
@@ -27,6 +39,8 @@ const getOneSAQuestion = (lessonId, questionId) => {
 
 module.exports = {
   getAllLessonQuestions,
+  getAllMCQuestions, 
+  getAllSAQuestions,
   getOneMCQuestion,
   getOneSAQuestion,
 }
