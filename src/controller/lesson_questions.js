@@ -6,6 +6,20 @@ const getAllLessonQuestions = (req, res, next) => {
   })
 }
 
+const getMCQuestion = (req, res, next) => {
+  model.getOneMCQuestion(req.params.id, req.params.questionId).then(question => {
+    res.status(200).json({ question })
+  })
+}
+
+const getSAQuestion = (req, res, next) => {
+  model.getOneSAQuestion(req.params.id, req.params.questionId).then(question => {
+    res.status(200).json({ question })
+  })
+}
+
 module.exports = {
-  getAllLessonQuestions
+  getAllLessonQuestions,
+  getMCQuestion,
+  getSAQuestion,
 }

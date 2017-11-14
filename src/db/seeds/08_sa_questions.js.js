@@ -4,7 +4,7 @@ exports.seed = knex => {
     return knex('sa_questions').insert([
       { id: 1, lesson_id: 1, 
           question: 'What is the approximate diameter of the earth?', 
-          answer: '25000 miles' },
+          answer: '7,917 miles' },
       { id: 2, lesson_id: 1, 
           question: 'How many Earth can fit in the Sun?', 
           answer: 'one million' },
