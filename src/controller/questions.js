@@ -12,7 +12,14 @@ const getOneQuestion = (req, res, next) => {
   })
 }
 
+const updateQuestion = (req, res, next) => {
+  model.updateQuestion(req.params.id, req.body).then(question => {
+    res.status(200).json({ question })
+  })
+}
+
 module.exports = {
   getAllQuestions,
-  getOneQuestion
+  getOneQuestion,
+  updateQuestion
 }
