@@ -37,10 +37,24 @@ const getOneSAQuestion = (lessonId, questionId) => {
     .andWhere('id', questionId)
 }
 
+const createMCQuestion = (lessonId, question ) => {
+  return knex('mc_questions')
+    .insert(question)
+    .returning('*')
+}
+
+const createSAQuestion = (lessonId, question) => {
+  return knex('sa_question')
+    .insert(question)
+    .returning('*')
+}
+
 module.exports = {
   getAllLessonQuestions,
   getAllMCQuestions, 
   getAllSAQuestions,
   getOneMCQuestion,
   getOneSAQuestion,
+  createMCQuestion,
+  createSAQuestion
 }
