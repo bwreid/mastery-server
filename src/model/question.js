@@ -11,8 +11,14 @@ const updateQuestion = (id, body) => knex('mc_questions')
   .update(body)
   .returning('*')
 
+const deleteQuestion = (id) => knex('mc_questions')
+  .where('id', id)
+  .returning('*')
+  .del()
+
 module.exports = {
   getAllQuestions,
   getOneQuestion,
-  updateQuestion
+  updateQuestion,
+  deleteQuestion
 }

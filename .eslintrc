@@ -15,7 +15,7 @@
       "args": "none"
     }],
     "arrow-parens": ["error", "as-needed"],
-    "quotes": ["warn", {
+    "quotes": [ "warn", {
       "allowTemplateLiterals": true
     }]
   }

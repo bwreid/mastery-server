@@ -18,8 +18,15 @@ const updateQuestion = (req, res, next) => {
   })
 }
 
+const deleteQuestion = (req, res, next) => {
+  model.deleteQuestion(req.params.id).then(question => {
+    res.status(200).json({ question })
+  })
+}
+
 module.exports = {
   getAllQuestions,
   getOneQuestion,
-  updateQuestion
+  updateQuestion,
+  deleteQuestion
 }

@@ -26,7 +26,7 @@ const updateQuestion = (req, res, next) => {
 
 const mcComplete = (req, res, next) => {
   const errors = []
-  fields.mc.forEach(field => {
+  fields.forEach(field => {
     if(!req.body.hasOwnProperty(field)) errors.push(`${field} is required`)
   })
   if(errors.length) next({ status: 400, message: 'There were errors', errors })
@@ -35,7 +35,7 @@ const mcComplete = (req, res, next) => {
 
 const mcPrune = (req, res, next) => {
   Object.keys(req.body).forEach(key => {
-    if(!fields.mc.includes(key)) delete req.body[key]
+    if(!fields.includes(key)) delete req.body[key]
   })
   next()
 }
