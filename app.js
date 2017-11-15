@@ -11,6 +11,7 @@ const {
   courseUnitRoutes,
   unitLessonRoutes,
   lessonQuestionRoutes,
+  questionsRoutes,
   lessonRoutes,
   teacherRoutes,
   studentRoutes,
@@ -29,6 +30,7 @@ app.use('/units/:id/lessons', unitLessonRoutes)
 app.use('/courses/:id/units', courseUnitRoutes)
 app.use('/classes/:id/students', classStudentsRoutes)
 app.use('/lessons/:id/questions', lessonQuestionRoutes)
+app.use('/questions', questionsRoutes)
 app.use('/courses', courseRoutes)
 app.use('/units', unitRoutes)
 app.use('/lessons', lessonRoutes)

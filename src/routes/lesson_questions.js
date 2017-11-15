@@ -9,5 +9,6 @@ router.get('/mc/:questionId', ctrl.getMCQuestion)
 router.get('/sa/:questionId', ctrl.getSAQuestion)
 router.post('/mc', ctrl.validations.mcComplete, ctrl.validations.mcPrune, ctrl.createMCQuestion)
 router.post('/sa', ctrl.validations.saComplete, ctrl.validations.saPrune, ctrl.createSAQuestion)
+router.put('/mc/:questionId', ctrl.validations.mcComplete, ctrl.validations.mcPrune, ctrl.updateMCQuestion)
 
 module.exports = router

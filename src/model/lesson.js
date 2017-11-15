@@ -20,10 +20,21 @@ const deleteLesson = (id) => knex('lessons')
   .returning('*')
   .del()
 
+const deleteLessonWithQuestions = (id) => knex('questions')
+  .where('lesson_id', id)
+  .del()
+  .then(function(){
+    this('lessons')
+      .where('id', id)
+      .returning('*')
+      .del()
+  })
+
 module.exports = {
   getAllLessons,
   getOneLesson,
   createLesson,
   updateLesson,
   deleteLesson,
+  deleteLessonWithQuestions
 }

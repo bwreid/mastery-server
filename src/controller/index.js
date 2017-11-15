@@ -5,6 +5,7 @@ module.exports = {
   lessonsController: require('./lessons'),
   unitLessonsController: require('./unit_lessons'),
   lessonQuestionsController: require('./lesson_questions'),
+  questionsController: require('./questions'),
   teachersController: require('./teachers'),
   studentsController: require('./students'),
   classesController: require('./classes'),

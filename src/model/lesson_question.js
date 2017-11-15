@@ -2,14 +2,16 @@ const knex = require('../db/connection')
 
 const getAllLessonQuestions = (lessonId) => {
   return knex('mc_questions')
-    .select('id', 'lesson_id', 'question')
+    .select('*')
     .where('lesson_id', lessonId)
-    .union(function() {
-      this.select('id', 'lesson_id', 'question')
-        .from('sa_questions')
-        .where('lesson_id', lessonId)
-    })
+    // .union(function() {
+    //   this.select('id', 'lesson_id', 'question')
+    //     .from('sa_questions')
+    //     .where('lesson_id', lessonId)
+    // })
 }
+
+// currently only getting MC questions. Maybe add SA later, but simplifying right now (11/15 10AM)
 
 const getAllMCQuestions = (lessonId) => {
   return knex('mc_questions')
@@ -44,8 +46,16 @@ const createMCQuestion = (lessonId, question ) => {
 }
 
 const createSAQuestion = (lessonId, question) => {
-  return knex('sa_question')
+  return knex('sa_questions')
     .insert(question)
+    .returning('*')
+}
+
+const updateMCQuestion = (lessonId, questionId, question) => {
+  return knex('mc_questions')
+    .where('lesson_id', lessonId)
+    .andWhere('id', questionId)
+    .update(question)
     .returning('*')
 }
 
@@ -56,5 +66,6 @@ module.exports = {
   getOneMCQuestion,
   getOneSAQuestion,
   createMCQuestion,
-  createSAQuestion
+  createSAQuestion,
+  updateMCQuestion
 }

@@ -40,6 +40,12 @@ const createMCQuestion = (req, res, next) => {
   })
 }
 
+const updateMCQuestion = (req, res, next) => {
+  model.updateMCQuestion(req.params.id, req.params.questionId, req.body).then(question => {
+    res.status(200).json({ question })
+  })
+}
+
 const mcComplete = (req, res, next) => {
   const errors = []
   fields.mc.forEach(field => {
@@ -86,6 +92,7 @@ module.exports = {
   getSAQuestion,
   createMCQuestion,
   createSAQuestion,
+  updateMCQuestion,
   validations: {
     mcComplete, mcPrune, saComplete, saPrune
   }
