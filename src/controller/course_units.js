@@ -2,7 +2,7 @@ const {
   courseUnitModel: model,
   unitLessonModel: dependencyModel
 } = require('../model')
-const fields = ['title', 'summary']
+const fields = ['title', 'summary_text']
 
 const getAllCourseUnits = (req, res, next) => {
   model.getAllCourseUnits(req.params.id).then(units => {
